@@ -1,0 +1,27 @@
+<div class="container">
+  <div class="page-header"> 
+    <h4> <%= @type %> </h4> 
+  </div>
+  <table class="table">
+    <thead> <tr> <th>Номер месяца</th> <th>Погашение кредита</th> <th>Погашение %</th> <th>Oбщий взнос</th> <th>Oстаток кредита</th></tr> </thead>
+    <tbody>
+    <% @calculator.get_table.each_with_index do |v, i|%>
+      <tr>
+        <td> <%= i + 1 %> </td> 
+        <td> <%= v[:repayment_loan] %> </td> 
+        <td> <%= v[:repayment_percent] %> </td> 
+        <td> <%= v[:total] %> </td>
+        <td> <%= v[:amount] %> </td>      
+      </tr>
+    <%  end %>
+      <tr>
+        <td></td> 
+        <td> <%= @calculator.repayment_loan_sum.round(1) %> </td> 
+        <td> <%= @calculator.repayment_percent_sum.round(2) %> </td> 
+        <td> <%= @calculator.total_contribution_sum.round(2) %> </td>
+        <td></td>      
+      </tr>
+    </tbody> 
+    
+  </table>
+</div>
